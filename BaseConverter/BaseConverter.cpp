@@ -19,7 +19,7 @@ int main()
 		cout << "Insira a base a ser convertida: ";
 		cin >> base;
 		if ((base < 2) || (base > 36)) {
-			cerr << "Base inválida!" << endl;
+			cerr << "Base invalida!" << endl;
 			continue;
 		}
 		
@@ -32,13 +32,9 @@ int main()
 		cin.ignore();
 
 		cout << "(1) para sair do programa.." << endl;
-		cout << "Qualquer outro valor para continuar..." << endl;
+		cout << "Insira outro valor para continuar a execucao..." << endl;
 		cin >> control;
 	}
-	
-
-	//Mantem a janela do console aberta ate que seja pressionado o enter
-	cin.get();
 	
 	return 0;
 }
