@@ -21,5 +21,6 @@ map<char, int> alphabet;
 string convert(int input, int base);
 void initialize_alphabet();
 string invert_string(string s);
+/* Função responsável por limpar a tela (pode não ser cross-platform) */
 void clear_screen() { if (system("CLS")) system("clear"); }
 

@@ -6,9 +6,9 @@ int main()
 {
 	int input = 0;
 	int base = 0;
-	//cout << "Insira um valor: " << endl;
 	initialize_alphabet();
 
+	//Loop de execução
 	int control = 0;
 	while (control != 1)
 	{
@@ -18,16 +18,18 @@ int main()
 
 		cout << "Insira a base a ser convertida: ";
 		cin >> base;
+		//Verifica se a base é válida
 		if ((base < 2) || (base > 36)) {
 			cerr << "Base invalida!" << endl;
 			continue;
 		}
 		
-		string final_value = invert_string(convert(input, base));
+		string final_value = convert(input, base);
 
 		cout << input << " na base " << base << " = " << 
 			final_value << endl << endl;
 
+		//Evita que o buffer do cin possa causar problema em instâncias futuras do loop.
 		cin.clear();
 		cin.ignore();
 
@@ -39,6 +41,9 @@ int main()
 	return 0;
 }
 
+/* Algoritmo que, através de divisões sucessivas e comparações dos valores de resto, converte um valor x (input) representado na base decimal
+para uma representação na base b (base).
+*/
 string convert(int input, int base) {
 	int n = input;
 	string result;
@@ -46,11 +51,11 @@ string convert(int input, int base) {
 		result.push_back((((n % base) < 10) ? ((n % base) + '0') : (alphabet[(n % base)])));
 		n = (int)(n / base);
 	} while (n != 0);
-	return result;
+	return invert_string(result);
 }
 
-/* @func Funcao que inicializa um map com todas as letras do alfabeto como valores a serem mapeados, sendo que suas chaves são os valores 
-os quais elas correspondem
+/* Funcao que inicializa um map com todas as letras do alfabeto como valores a serem mapeados, sendo que suas chaves são os valores 
+os quais elas correspondem.
 */
 void initialize_alphabet() {
 	char val = 'A';
@@ -59,6 +64,8 @@ void initialize_alphabet() {
 	}
 }
 
+/* Função para inverter uma string, necessária pois a função convert retorna como resultado o número ao contrário.
+*/
 string invert_string(string s) {
 	int start = 0, end = s.size() - 1;
 
