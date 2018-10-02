@@ -18,6 +18,10 @@ int main()
 
 		cout << "Insira a base a ser convertida: ";
 		cin >> base;
+		if ((base < 2) || (base > 36)) {
+			cerr << "Base inválida!" << endl;
+			continue;
+		}
 		
 		string final_value = invert_string(convert(input, base));
 
